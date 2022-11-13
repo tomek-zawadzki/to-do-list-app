@@ -33,6 +33,7 @@ const prepareDOMElements = () => {
 const prepareDOMEvents = () => {
   $addBtn.addEventListener("click", addNewTask);
   $todoInput.addEventListener("keyup", enterCheck);
+  $ulList.addEventListener("click", checkClick);
 };
 
 const addNewTask = () => {
@@ -77,15 +78,19 @@ createToolsArea = () => {
   toolsPanel.appendChild(completeBtn);
   toolsPanel.appendChild(editBtn);
   toolsPanel.appendChild(deleteBtn);
-  //   <div class="tools">
-  //     <button class="complete">
-  //       <i class="fas fa-check"></i>
-  //     </button>
-  //     <button class="edit">EDIT</button>
-  //     <button class="delete">
-  //       <i class="fas fa-times" p></i>
-  //     </button>
-  //   </div>;
+};
+
+const checkClick = (e) => {
+  if (e.target.classList.value !== "") {
+    if (e.target.closest("button").classList.contains("complete")) {
+      e.target.closest("li").classList.toggle("completed");
+      e.target.closest("button").classList.toggle("completed");
+    } else if (e.target.closest("button").classList.contains("edit")) {
+      console.log("edit");
+    } else if (e.target.closest("button").classList.contains("delete")) {
+      console.log("delete");
+    }
+  }
 };
 
 document.addEventListener("DOMContentLoaded", main);
