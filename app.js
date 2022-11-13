@@ -88,8 +88,17 @@ const checkClick = (e) => {
     } else if (e.target.closest("button").classList.contains("edit")) {
       console.log("edit");
     } else if (e.target.closest("button").classList.contains("delete")) {
-      console.log("delete");
+      deleteTask(e);
     }
+  }
+};
+
+const deleteTask = (e) => {
+  const deleteTodo = e.target.closest("li");
+  deleteTodo.remove();
+
+  if ($allTasks.length === 0) {
+    $alertInfo.innerText = "Brak zadań na liście";
   }
 };
 
